@@ -1,7 +1,7 @@
 {
   "name": "bambara-dl",
   "version": "1.0.0",
-  "description": "\"Enter your download code, reveal the story\"",
+  "description": "Enter your download code, reveal the story",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,17 +9,28 @@
   "keywords": [
     "bambara",
     "music",
-    "music",
     "download",
     "short",
-    "story",
     "story",
     "night",
     "chimes"
   ],
   "author": "Celeste Glavin",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "browserify": "^14.1.0",
+    "express": "^4.15.2",
+    "gulp": "^3.9.1",
+    "mongodb": "^2.2.25",
+    "morgan": "^1.8.1",
+    "path": "^0.12.7",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "reactify": "^1.1.1",
+    "uuid": "^3.0.1",
+    "vinyl-source-stream": "^1.1.0"
+  },
   "devDependencies": {},
   "repository": {
     "type": "git",
