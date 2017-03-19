@@ -18,5 +18,15 @@
     "chimes"
   ],
   "author": "Celeste Glavin",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmugla/bambara-story.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cmugla/bambara-story/issues"
+  },
+  "homepage": "https://github.com/cmugla/bambara-story#readme"
 }
