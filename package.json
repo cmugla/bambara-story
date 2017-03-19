@@ -1,0 +1,22 @@
+{
+  "name": "bambara-dl",
+  "version": "1.0.0",
+  "description": "\"Enter your download code, reveal the story\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bambara",
+    "music",
+    "music",
+    "download",
+    "short",
+    "story",
+    "story",
+    "night",
+    "chimes"
+  ],
+  "author": "Celeste Glavin",
+  "license": "MIT"
+}
