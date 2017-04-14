@@ -3,32 +3,31 @@ const { MongoClient } = require('mongodb');
 const dbConnection = 'mongodb://localhost:27017/bambara';
 
 function updateIsCovered(req, res, next) {
-  console.log('updateIsCovered req', req.query.code)
-
-  let { code } = req.query
+  console.log('updateIsCovered req', req.params)
 
   MongoClient.connect(dbConnection, function(err, db){
     if(err) throw err;
 
-    db.collection('story_test')
-      .update(
-        { "code": code },
-        { $set: { "isCovered": true } }
-      ,
-      function(err, results){
-        if(err) throw err;
-        // console.log(results)
-        next()
-      }
-    )
-  })
+    db.collection('story_values')
+      .findOneAndUpdate(
+        { code: req.params.code },
+        { $set: { isCovered: false } },
+        function(err, results){
+          if(err) throw err;
+          // console.log('updateIsCovered results', results)
+          res.story = results
+          next()
+        }
+      )
+    }
+  )
 }
 
 function getStory(req, res, next) {
   MongoClient.connect(dbConnection, function(err, db){
     if(err) throw err;
 
-    db.collection('story_test')
+    db.collection('story_values')
       .find()
       .toArray(function(err, results){
         if (err) throw err;

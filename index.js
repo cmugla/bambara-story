@@ -9,18 +9,28 @@ const storyRoute		= require('./routes/storyRoute')
 
 const app               = express()
 const PORT              = process.env.PORT || process.argv[2] || 3000
+const env 				= process.env.NODE_ENV || 'dev';
+const DEV         		= env==='dev';
 
-// set up logging so that we can see what's happening
-app.use(logger('dev'))
-app.use(bodyParser.json())
+// set up some logging
+app.use( logger( DEV ? 'dev' : 'common') );
+
+// we're only going to accept json
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 // set up ejs to render the views
 app.set('view engine', 'ejs')
+// app.set('views', path.join(__dirname, 'views'));
+
+/* ROUTES */
+app.use('/story', storyRoute);
+// app.get('/', function (req, res) {
+//   res.render('index', {});
+// });
+app.use(express.static(path.join(__dirname, 'dist')))
 
 // set up server
 app.listen(PORT, function(){
   console.log("server up and running on port ", PORT)
 })
-
-/* ROUTES */
-app.use('/story', storyRoute);
