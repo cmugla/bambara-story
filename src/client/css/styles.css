@@ -10,15 +10,29 @@ body {
 	color: #141311;
 }
 
+a {
+	color: #141311;
+}
+
+span {
+	-webkit-transition: all 1000ms ease-in;
+    -moz-transition: all 1000ms ease-in;
+    -o-transition: all 1000ms ease-in;
+    -ms-transition: all 1000ms ease-in;
+	transition: all 1000ms ease-in;
+}
+
+.form-container a {
+	color: #f3f3f3;
+}
+
 .is-covered {
 	background-color: #141311;
 	-webkit-user-select: none;  /* Chrome all / Safari all */
 	-moz-user-select: none;     /* Firefox all */
 	-ms-user-select: none;      /* IE 10+ */
 	user-select: none;          /* Likely future */
-
 }
-span.is-covered {line-height: 1;}
 
 .new-paragraph {
 	width: 100%;

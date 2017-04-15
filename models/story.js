@@ -3,8 +3,6 @@ const { MongoClient } = require('mongodb');
 const dbConnection = 'mongodb://localhost:27017/bambara';
 
 function updateIsCovered(req, res, next) {
-  console.log('updateIsCovered req', req.params)
-
   MongoClient.connect(dbConnection, function(err, db){
     if(err) throw err;
 
@@ -14,8 +12,6 @@ function updateIsCovered(req, res, next) {
         { $set: { isCovered: false } },
         function(err, results){
           if(err) throw err;
-          // console.log('updateIsCovered results', results)
-          res.story = results
           next()
         }
       )
@@ -31,7 +27,6 @@ function getStory(req, res, next) {
       .find()
       .toArray(function(err, results){
         if (err) throw err;
-        // console.log('getStory results', results)
         res.json(results)
         next()
       })
