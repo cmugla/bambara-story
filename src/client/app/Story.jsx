@@ -9,7 +9,7 @@ class Story extends Component {
     story: null,
     code: '',
     error: null,
-    isSuccess: false,
+    isReadMode: true,
   }
 
   componentDidMount = () => {
@@ -18,45 +18,53 @@ class Story extends Component {
     })
   }
 
-  updateCode = (e) => {
+  updateCode = e => {
+    console.log('updateCode', e.target.value)
+    var regExOnlyLettersSpaces = /^[a-zA-Z\s]*$/;
+    if (!regExOnlyLettersSpaces.test(e.key)) {
+      e.preventDefault()
+      return
+    }
     this.setState({
       code: e.target.value.split(' ').join('').toLowerCase()
+    })
+  }
+
+  setIsReadMode = () => {
+    this.setState({
+      isReadMode: false,
     })
   }
 
   handleSubmit = async (e) => {
     e.preventDefault()
 
-    // validate code
+    // validate code --> filter clientside to see if there is a match
     const successCode = await this.state.story.filter(each => each.code === this.state.code)
-
-    console.log('handleSubmit', successCode)
 
     if (successCode.length) {
       // Success!
       await ajax.updateStory(this.state.code).then(data => {
+        // update story
         this.setState({ story: data })
+        // scroll to element
         this[this.state.code].scrollIntoView()
+        // Start download
+        this.download.click()
+        this.setState({ isReadMode: true })
       }).catch(error => console.error('error when updating', error))
-      // TODO > clear form
-      this.setState({
-        isSuccess: true,
-      })
     } else {
       // Code not right, show error
       this.setState({
-        error: 'Looks like that is not a valid code, please try again.'
+        error: 'That is not a valid code, please try again.'
       })
     }
-    // TODO > scroll to id = _id
-    // TODO > start download
-      // anchor tag has a download attribute
-      // set download=true (initially it is false)
-      // href to album url
   }
 
   render() {
-    const { story, error, isSuccess, code } = this.state
+    const { story, error, isReadMode, code } = this.state
+
+    console.log('code', code)
 
     return (
       <div className="story">
@@ -73,8 +81,8 @@ class Story extends Component {
                     key={`line-${index}`}
                     className="each-line"
                   >
-                    <span className={`${each.isCovered ? 'is-covered' : ''}`}>{each.value}. </span>
-                    {each.endOfParagraph && <span className="new-paragraph" />} 
+                    <span className={`${each.isCovered ? 'is-covered' : ''} ${isReadMode && each.code == code ? 'show' : ''}`}>{each.value}. </span>
+                    {each.endOfParagraph && <span><br/><br/></span>} 
                   </span>
                 ))
               }
@@ -86,22 +94,37 @@ class Story extends Component {
           </div>
         </div>
         <div className="right-col">
-          <div className="container">
+          <div className={`container ${isReadMode ? 'is-success' : ''}`}>
             <p>BAMBARA</p>
             <p>Night Chimes</p>
-            <div className={`form-container ${isSuccess ? 'hide' : ''}`}>
-              <p>Album download</p>
-              <p>Enter your code to reveal a piece of the story to the world. If entered correctly, your download should start immediately after clicking REVEAL.</p>
-              <form id="code" ref={node => this.form = node} onSubmit={this.handleSubmit}>
-                <TextInput
-                  type="text"
-                  value={code}
-                  onChange={this.updateCode}
-                  error={error}
-                />
-                <button className="button" type="submit">REVEAL</button>
-              </form>
-            </div>
+            {
+              isReadMode
+              &&
+              <div>
+                <img className="album-art" src="https://f4.bcbits.com/img/a3123205419_10.jpg" alt=""/>
+                <button className="button" onClick={this.setIsReadMode}>ENTER DOWNLOAD CODE</button>
+              </div>
+            }
+            {
+              !isReadMode
+              &&
+              <div className="form-container">
+                <p className="instructions">Instructions for digital download:</p>
+                <p className="instructions">Enter the highlighted words from the passage sent to you with your copy of the Night Chimes 7". Click REVEAL.</p>
+                <p className="instructions">Your download will start immediately after it your passage is revealed to the world.</p>
+                <form id="code" ref={node => this.form = node} onSubmit={this.handleSubmit}>
+                  <TextInput
+                    type="text"
+                    placeholder="Enter download code"
+                    value={code}
+                    error={error}
+                    onChange={this.updateCode}
+                  />
+                  <button className="button" type="submit">REVEAL</button>
+                  <a ref={node => {this.download = node}} href="http://celesteglavin.com/BAMBARA.zip" download />
+                </form>
+              </div>
+            }
             <a href="https://bambara.bandcamp.com/album/night-chimes" target="blank">Listen >>></a>
           </div>
         </div>
