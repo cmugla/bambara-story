@@ -7,7 +7,7 @@ function updateIsCovered(req, res, next) {
     if(err) throw err;
 
     db.collection('story_values')
-      .findOneAndUpdate(
+      .update(
         { code: req.params.code },
         { $set: { isCovered: false } },
         function(err, results){

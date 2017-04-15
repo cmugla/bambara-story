@@ -15,15 +15,15 @@ a {
 }
 
 span {
-	-webkit-transition: all 1000ms ease-in;
-    -moz-transition: all 1000ms ease-in;
-    -o-transition: all 1000ms ease-in;
-    -ms-transition: all 1000ms ease-in;
-	transition: all 1000ms ease-in;
+	-webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+	transition: all 500ms ease-in-out;
 }
 
-.form-container a {
-	color: #f3f3f3;
+.hide {
+	display: none;
 }
 
 .is-covered {
@@ -48,13 +48,16 @@ span {
 	position: fixed;
 }
 
-.form-container {
+.container {
 	color: #f3f3f3;
 	width: 40%;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+}
+.container a {
+	color: #f3f3f3;
 }
 
 input {

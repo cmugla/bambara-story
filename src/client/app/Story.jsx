@@ -20,21 +20,23 @@ class Story extends Component {
 
   updateCode = (e) => {
     this.setState({
-      code: e.target.value.toLowerCase()
+      code: e.target.value.split(' ').join('').toLowerCase()
     })
   }
 
   handleSubmit = async (e) => {
     e.preventDefault()
 
-
     // validate code
     const successCode = await this.state.story.filter(each => each.code === this.state.code)
+
+    console.log('handleSubmit', successCode)
 
     if (successCode.length) {
       // Success!
       await ajax.updateStory(this.state.code).then(data => {
         this.setState({ story: data })
+        this[this.state.code].scrollIntoView()
       }).catch(error => console.error('error when updating', error))
       // TODO > clear form
       this.setState({
@@ -84,20 +86,22 @@ class Story extends Component {
           </div>
         </div>
         <div className="right-col">
-          <div className="form-container">
+          <div className="container">
             <p>BAMBARA</p>
             <p>Night Chimes</p>
-            <p>Album download</p>
-            <p>Enter your code to reveal a piece of the story to the world. If entered correctly, your download should start immediately after clicking REVEAL.</p>
-            <form key={key} id="code" ref={node => this.form = node} onSubmit={this.handleSubmit}>
-              <TextInput
-                type="text"
-                value={code}
-                onChange={this.updateCode}
-                error={error}
-              />
-              <button className="button" type="submit">REVEAL</button>
-            </form>
+            <div className={`form-container ${isSuccess ? 'hide' : ''}`}>
+              <p>Album download</p>
+              <p>Enter your code to reveal a piece of the story to the world. If entered correctly, your download should start immediately after clicking REVEAL.</p>
+              <form id="code" ref={node => this.form = node} onSubmit={this.handleSubmit}>
+                <TextInput
+                  type="text"
+                  value={code}
+                  onChange={this.updateCode}
+                  error={error}
+                />
+                <button className="button" type="submit">REVEAL</button>
+              </form>
+            </div>
             <a href="https://bambara.bandcamp.com/album/night-chimes" target="blank">Listen >>></a>
           </div>
         </div>
