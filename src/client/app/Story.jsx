@@ -63,10 +63,12 @@ class Story extends Component {
     }
   }
 
+  getStyle = style => {
+    return { fontStyle: style }
+  }
+
   render() {
     const { story, error, isReadMode, code } = this.state
-
-    console.log('IS_IOS', Config.IS_IOS)
 
     return (
       <div className="story">
@@ -78,7 +80,7 @@ class Story extends Component {
               isReadMode
               &&
               <div>
-                <img className="album-art" src="https://f4.bcbits.com/img/a3123205419_10.jpg" alt=""/>
+                <img className="album-art" src="src/client/images/cover.jpg" alt=""/>
                 <button className="button" onClick={this.setIsReadMode}>ENTER DOWNLOAD CODE</button>
               </div>
             }
@@ -130,7 +132,7 @@ class Story extends Component {
                     key={`line-${index}`}
                     className="each-line"
                   >
-                    <span className={`${each.isCovered ? 'is-covered' : ''} ${isReadMode && each.code == code ? 'show' : ''}`}>{each.value}. </span>
+                    <span style={this.getStyle(each.font_style)} className={`${each.isCovered ? 'is-covered' : ''} ${isReadMode && each.code == code ? 'show' : ''}`}>{each.value}</span>
                     {each.endOfParagraph && <span><br/><br/></span>} 
                   </span>
                 ))

@@ -3,6 +3,7 @@ var webpack = require('webpack');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var BUILD_DIR = path.resolve(__dirname, 'dist');
 var APP_DIR = path.resolve(__dirname, 'src/client/app');
@@ -44,6 +45,10 @@ var config = {
       appMountId: 'app'
     }),
     new ExtractTextPlugin("src/client/css/styles.css"),
+    new CopyWebpackPlugin([
+      { from: 'src/client/favicon', to: 'src/client/favicon' },
+      { from: 'src/client/images', to: 'src/client/images' }
+    ])
     // new webpack.optimize.UglifyJsPlugin({
     //   compress: { warnings: false },
     //   mangle: true,
