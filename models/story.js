@@ -29,7 +29,7 @@ function getStory(req, res, next) {
       .find()
       .toArray(function(err, results) {
         if (err) throw err;
-        res.json(results)
+        res.results = results
         next()
       })
   })
