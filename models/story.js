@@ -8,7 +8,7 @@ function updateIsCovered(req, res, next) {
   MongoClient.connect(dbConnection, function(err, db) {
     if(err) throw err;
 
-    db.collection('story_values')
+    db.collection('story')
       .update(
         { code: req.params.code },
         { $set: { isCovered: false } },
@@ -25,7 +25,7 @@ function getStory(req, res, next) {
   MongoClient.connect(dbConnection, function(err, db) {
     if(err) throw err;
 
-    db.collection('story_values')
+    db.collection('story')
       .find()
       .toArray(function(err, results) {
         if (err) throw err;
