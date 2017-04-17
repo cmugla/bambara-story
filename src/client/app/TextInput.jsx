@@ -1,8 +1,7 @@
-import React, { PureComponent, PropTypes } from 'react'
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 
 class TextInput extends PureComponent {
-  stat={}
-
   focus = () => this.refs.input.focus()
 
   blur = () => this.refs.input.blur()

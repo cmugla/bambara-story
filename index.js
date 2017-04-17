@@ -1,16 +1,16 @@
-'use strict'
+"use strict";
 
-const express           = require('express')
-const logger            = require('morgan')
-const path              = require('path')
-const bodyParser        = require('body-parser')
+const express = require('express')
+const logger = require('morgan')
+const path = require('path')
+const bodyParser = require('body-parser')
 
-const storyRoute		= require('./routes/storyRoute')
+const storyRoute = require('./routes/storyRoute')
 
-const app               = express()
-const PORT              = process.env.PORT || process.argv[2] || 3000
-const env 				= process.env.NODE_ENV || 'dev';
-const DEV         		= env==='dev';
+const app = express()
+const PORT = process.env.PORT || process.argv[2] || 3000
+const env = process.env.NODE_ENV || 'dev';
+const DEV = env==='dev';
 
 // set up some logging
 app.use( logger( DEV ? 'dev' : 'common') );
@@ -25,9 +25,6 @@ app.set('view engine', 'ejs')
 
 /* ROUTES */
 app.use('/story', storyRoute);
-// app.get('/', function (req, res) {
-//   res.render('index', {});
-// });
 app.use(express.static(path.join(__dirname, 'dist')))
 
 // set up server

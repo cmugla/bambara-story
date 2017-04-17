@@ -1,3 +1,4 @@
+require('whatwg-fetch');
 var webpack = require('webpack');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -7,17 +8,20 @@ var BUILD_DIR = path.resolve(__dirname, 'dist');
 var APP_DIR = path.resolve(__dirname, 'src/client/app');
 
 var config = {
-  entry: APP_DIR + '/main.jsx',
+  entry: [
+    'whatwg-fetch',
+    APP_DIR + '/main.jsx'
+  ],
   output: {
     path: BUILD_DIR,
     filename: 'bundle.js'
   },
-  module : {
-    loaders : [
+  module: {
+    loaders: [
       {
-        test : /\.jsx?/,
-        include : APP_DIR,
-        loader : 'babel-loader'
+        test: /\.jsx?/,
+        include: APP_DIR,
+        loader: 'babel-loader'
       },
       {
         test: /\.css$/,
@@ -33,10 +37,10 @@ var config = {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
     new HtmlWebpackPlugin({
-      title: 'Bambara Story',
+      title: 'BAMBARA - Night Chimes',
       xhtml: true,
       inject: false,
-      template: require('html-webpack-template'),
+      template: './views/index.ejs',
       appMountId: 'app'
     }),
     new ExtractTextPlugin("src/client/css/styles.css"),

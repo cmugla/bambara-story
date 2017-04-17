@@ -112,6 +112,14 @@ input {
 		width: 100%;
 		position: relative;
 	}
+
+	.story-container {
+		padding: 1rem;
+	}
+
+	.container {
+		width: 60%;
+	}
 }
 
 @media (min-width: 601px) and (max-width: 1024px) {

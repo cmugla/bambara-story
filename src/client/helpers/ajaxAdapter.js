@@ -4,7 +4,7 @@ export default class AjaxAdapter {
   }
 
   getStory() {
-    return fetch('/story').then( r => r.json() );
+    return fetch('/story').then( r => r.json() )
   }
 
   updateStory(code) {
