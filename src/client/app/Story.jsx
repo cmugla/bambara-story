@@ -3,6 +3,9 @@ import AjaxAdapter from '../helpers/ajaxAdapter.js'
 import TextInput from './TextInput.jsx'
 
 const ajax = new AjaxAdapter(fetch)
+const Config = {
+  IS_IOS: !!navigator.userAgent.match(/iPhone|iPad|iPod/i),
+}
 
 class Story extends Component {
   state = {
@@ -60,6 +63,10 @@ class Story extends Component {
     }
   }
 
+  getStyle = style => {
+    return { fontStyle: style }
+  }
+
   render() {
     const { story, error, isReadMode, code } = this.state
 
@@ -73,12 +80,14 @@ class Story extends Component {
               isReadMode
               &&
               <div>
-                <img className="album-art" src="https://f4.bcbits.com/img/a3123205419_10.jpg" alt=""/>
+                <img className="album-art" src="src/client/images/cover.jpg" alt=""/>
                 <button className="button" onClick={this.setIsReadMode}>ENTER DOWNLOAD CODE</button>
               </div>
             }
             {
               !isReadMode
+              &&
+              !Config.IS_IOS
               &&
               <div className="form-container">
                 <p className="instructions">Instructions for digital download:</p>
@@ -97,6 +106,16 @@ class Story extends Component {
                 </form>
               </div>
             }
+            {
+              !isReadMode
+              &&
+              Config.IS_IOS
+              &&
+              <div>
+                <p>Darn, iOS devices do not support direct file downloads. Come back to this url on your Mac or PC (or Android device) and follow the instructions for download and, once downloaded, transfer the files to your iOS device.</p>
+                <p className="instructions">Refer to <a href="https://support.apple.com/en-us/HT205919">iTunes Syncing Help</a> for more info on transferring files to your Apple device.</p>
+              </div>
+            }
             <a href="https://bambara.bandcamp.com/album/night-chimes" target="blank">Listen >>></a>
           </div>
         </div>
@@ -113,7 +132,7 @@ class Story extends Component {
                     key={`line-${index}`}
                     className="each-line"
                   >
-                    <span className={`${each.isCovered ? 'is-covered' : ''} ${isReadMode && each.code == code ? 'show' : ''}`}>{each.value}. </span>
+                    <span style={this.getStyle(each.font_style)} className={`${each.isCovered ? 'is-covered' : ''} ${isReadMode && each.code == code ? 'show' : ''}`}>{each.value}</span>
                     {each.endOfParagraph && <span><br/><br/></span>} 
                   </span>
                 ))

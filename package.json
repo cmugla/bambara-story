@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "babel-plugin-transform-class-properties": "^6.23.0",
+    "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.27.3",
     "exports-loader": "^0.6.4",
     "extract-text-webpack-plugin": "^2.1.0",
