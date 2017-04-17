@@ -87,12 +87,13 @@ input {
 	border: 0;
 	background-color: #f3f3f3;
 	padding-left: 1rem;
+	margin-bottom: 0.5em;
 	font-family: 'Roboto Mono', 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
 }
 
 .error {
 	font-size: 0.5rem;
-	color: #ccc;
+	color: #303030;
 }
 
 .button {
