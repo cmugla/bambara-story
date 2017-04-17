@@ -3,6 +3,9 @@ import AjaxAdapter from '../helpers/ajaxAdapter.js'
 import TextInput from './TextInput.jsx'
 
 const ajax = new AjaxAdapter(fetch)
+const Config = {
+  IS_IOS: !!navigator.userAgent.match(/iPhone|iPad|iPod/i),
+}
 
 class Story extends Component {
   state = {
@@ -63,6 +66,8 @@ class Story extends Component {
   render() {
     const { story, error, isReadMode, code } = this.state
 
+    console.log('IS_IOS', Config.IS_IOS)
+
     return (
       <div className="story">
         <div className="right-col">
@@ -80,6 +85,8 @@ class Story extends Component {
             {
               !isReadMode
               &&
+              !Config.IS_IOS
+              &&
               <div className="form-container">
                 <p className="instructions">Instructions for digital download:</p>
                 <p className="instructions">Enter the highlighted words on the download card sent to you with your copy of the Night Chimes 7". Click REVEAL.</p>
@@ -95,6 +102,16 @@ class Story extends Component {
                   <button className="button" type="submit">REVEAL</button>
                   <a ref={node => {this.download = node}} href="http://celesteglavin.com/BAMBARA.zip" download />
                 </form>
+              </div>
+            }
+            {
+              !isReadMode
+              &&
+              Config.IS_IOS
+              &&
+              <div>
+                <p>Darn, iOS devices do not support direct file downloads. Come back to this url on your Mac or PC (or Android device) and follow the instructions for download and, once downloaded, transfer the files to your iOS device.</p>
+                <p className="instructions">Refer to <a href="https://support.apple.com/en-us/HT205919">iTunes Syncing Help</a> for more info on transferring files to your Apple device.</p>
               </div>
             }
             <a href="https://bambara.bandcamp.com/album/night-chimes" target="blank">Listen >>></a>
