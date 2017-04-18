@@ -54,7 +54,7 @@ class Story extends Component {
         // scroll to element
         // this[this.state.code].scrollIntoView()
         scroller.scrollTo(this.state.code, {
-          duration: 1500,
+          duration: 1000,
           delay: 0,
           smooth: true,
         })
