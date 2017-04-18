@@ -34,6 +34,3 @@ node_modules
 
 # environmental variables
 .env
-
-# distribution files
-dist
