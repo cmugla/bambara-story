@@ -60,8 +60,8 @@ span.show {
 	height: 100vh;
 	position: fixed;
 	right: 0;
-	/*background-color: #303030;*/
-	background-color: #ecd9f6;
+	background-color: #303030;
+	/*background-color: #ecd9f6;*/
 }
 
 .container {
