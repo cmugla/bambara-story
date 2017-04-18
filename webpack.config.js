@@ -6,12 +6,12 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var BUILD_DIR = path.resolve(__dirname, 'dist');
-var APP_DIR = path.resolve(__dirname, 'src/client/app');
+var APP_DIR = path.resolve(__dirname, 'src/client');
 
 var config = {
   entry: [
     'whatwg-fetch',
-    APP_DIR + '/main.jsx'
+    APP_DIR + '/app/main.js'
   ],
   output: {
     path: BUILD_DIR,
@@ -20,9 +20,9 @@ var config = {
   module: {
     loaders: [
       {
-        test: /\.jsx?/,
+        test: /\.js?/,
         include: APP_DIR,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
       },
       {
         test: /\.css$/,
@@ -35,7 +35,7 @@ var config = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new HtmlWebpackPlugin({
       title: 'BAMBARA - Night Chimes',

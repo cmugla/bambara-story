@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import AjaxAdapter from '../helpers/ajaxAdapter.js'
-import TextInput from './TextInput.jsx'
+import TextInput from './TextInput.js'
 
 const ajax = new AjaxAdapter(fetch)
 const Config = {
