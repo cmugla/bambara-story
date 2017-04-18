@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Scroll, { Element, scroller } from 'react-scroll'
+
 import AjaxAdapter from '../helpers/ajaxAdapter.js'
 import TextInput from './TextInput.js'
 
@@ -50,7 +52,12 @@ class Story extends Component {
         // update story
         this.setState({ story: data })
         // scroll to element
-        this[this.state.code].scrollIntoView()
+        // this[this.state.code].scrollIntoView()
+        scroller.scrollTo(this.state.code, {
+          duration: 1500,
+          delay: 100,
+          smooth: true,
+        })
         // Start download
         this.download.click()
         this.setState({ isReadMode: true })
@@ -127,14 +134,15 @@ class Story extends Component {
                 story
                 &&
                 story.map((each, index) => (
-                  <span
-                    ref={node => { this[each.code] = node }}
-                    key={`line-${index}`}
-                    className="each-line"
-                  >
-                    <span style={this.getStyle(each.font_style)} className={`${each.isCovered ? 'is-covered' : ''} ${isReadMode && each.code == code ? 'show' : ''}`}>{each.value}</span>
-                    {each.endOfParagraph && <span><br/><br/></span>} 
-                  </span>
+                  <Element name={each.code}>
+                    <span
+                      key={`line-${index}`}
+                      className="each-line"
+                    >
+                      <span style={this.getStyle(each.font_style)} className={`${each.isCovered ? 'is-covered' : ''} ${isReadMode && each.code == code ? 'show' : ''}`}>{each.value}</span>
+                      {each.endOfParagraph && <span><br/><br/></span>} 
+                    </span>
+                  </Element>
                 ))
               }
             </p>
