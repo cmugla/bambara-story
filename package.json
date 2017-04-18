@@ -1,6 +1,9 @@
 {
   "name": "bambara-dl",
   "version": "1.0.0",
+  "engines": {
+    "node": "6.5.0"
+  },
   "description": "Enter your download code, reveal the story",
   "main": "index.js",
   "scripts": {
