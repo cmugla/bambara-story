@@ -55,7 +55,7 @@ class Story extends Component {
         // this[this.state.code].scrollIntoView()
         scroller.scrollTo(this.state.code, {
           duration: 1500,
-          delay: 100,
+          delay: 0,
           smooth: true,
         })
         // Start download
