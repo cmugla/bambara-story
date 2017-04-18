@@ -120,7 +120,7 @@
   },
   {
     "value": "Mrs. Thompson, with her leopard print dresses, her yellow rimmed eyes, and her bedridden husband on dialysis. Joey, with his cheap prosthetic arm, living off the money he got from losing the hairy one with all the tribal tattoos. Ms. Taylor, the widow of a pro poker player, who does nothing but scratch lottery tickets and complain on the phone to her daughter in Amarillo.",
-    "code": "mrs.thompson,",
+    "code": "mrsthompson,",
     "isCovered": true,
     "endOfParagraph": true,
     "font_style": "normal"
@@ -169,7 +169,7 @@
   },
   {
     "value": "Ms. Alvarez clicks her tongue and clears her throat. \u201cThey\u2019re letting your daddy out tomorrow.\u201d Sara notices her favorite red lipstick on Ms. Alvarez\u2019s shriveled mouth, pouting coquettishly. \u201cYeah, I\u2019m aware. Guess we won\u2019t be needing you around anymore.\u201d \u201cOh, I don\u2019t think I\u2019ll be going anywhere you ungrateful little beast.\u201d Ms. Alvarez holds her hand out in front of her face, admiring her newly painted nails. Bright red and pearlescent.",
-    "code": "ms.alvarez",
+    "code": "msalvarez",
     "isCovered": true,
     "endOfParagraph": true,
     "font_style": "normal"
