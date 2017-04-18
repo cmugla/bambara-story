@@ -65,8 +65,8 @@ span.show {
 }
 
 .container {
-	/*color: #f3f3f3;*/
-	color: #303030;
+	color: #f3f3f3;
+	/*color: #303030;*/
 	width: 40%;
 	position: absolute;
 	top: 50%;
@@ -74,7 +74,7 @@ span.show {
 	transform: translate(-50%, -50%);
 }
 .container a {
-	/*color: #f3f3f3;*/
+	color: #f3f3f3;
 }
 
 .instructions {
