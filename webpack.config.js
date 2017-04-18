@@ -1,4 +1,3 @@
-require('whatwg-fetch');
 var webpack = require('webpack');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -9,10 +8,7 @@ var BUILD_DIR = path.resolve(__dirname, 'dist');
 var APP_DIR = path.resolve(__dirname, 'src/client');
 
 var config = {
-  entry: [
-    'whatwg-fetch',
-    APP_DIR + '/app/main.js'
-  ],
+  entry: APP_DIR + '/app/main.js',
   output: {
     path: BUILD_DIR,
     filename: 'bundle.js'
