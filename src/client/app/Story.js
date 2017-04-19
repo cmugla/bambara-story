@@ -40,6 +40,11 @@ class Story extends Component {
     })
   }
 
+  handleAnalyticsClickReveal = e => {
+    // send google anaytics event
+    ga('send', 'event', 'Story', 'click', 'REVEAL');
+  }
+
   handleSubmit = (e) => {
     e.preventDefault()
 
@@ -62,6 +67,8 @@ class Story extends Component {
         // Start download, if not an iOS device (not supported)
         if (!Config.IS_IOS) {
           this.download.click()
+          // send event to Google Analytics
+          ga('send', 'event', 'Story', 'click', 'Download begins');
         }
         this.setState({ isReadMode: true })
       }).catch(error => console.error('error when updating', error))
@@ -111,7 +118,7 @@ class Story extends Component {
                     error={error}
                     onChange={this.updateCode}
                   />
-                  <button className="button" type="submit">REVEAL</button>
+                  <button className="button" type="submit" onClick={this.handleAnalyticsClickReveal}>REVEAL</button>
                   <a ref={node => {this.download = node}} href="http://celesteglavin.com/BAMBARA.zip" download />
                 </form>
               </div>
