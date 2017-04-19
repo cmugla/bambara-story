@@ -52,7 +52,7 @@ class Story extends Component {
         // update story
         this.setState({ story: data })
         // scroll to element
-        console.log('window', window.innerHeight, offset)
+        const offset = -((window.innerHeight / 2) - 100)
         scroller.scrollTo(this.state.code, {
           duration: 200,
           delay: 0,
