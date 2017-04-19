@@ -97,7 +97,7 @@ class Story extends Component {
               isReadMode
               &&
               <div>
-                <img className="album-art" src="src/client/images/cover.jpg" alt=""/>
+                <img className="album-art" src="https://bambara.herokuapp.com/src/client/images/cover.jpg" alt=""/>
                 <button className="button" onClick={this.setIsReadMode}>ENTER DOWNLOAD CODE</button>
               </div>
             }
