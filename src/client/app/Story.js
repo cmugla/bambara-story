@@ -7,7 +7,6 @@ import TextInput from './TextInput.js'
 const ajax = new AjaxAdapter(fetch)
 const Config = {
   IS_IOS: !!navigator.userAgent.match(/iPhone|iPad|iPod/i),
-  IS_SAFARI: !!navigator.userAgent.indexOf("Safari") != -1,
 }
 
 class Story extends Component {
@@ -88,22 +87,16 @@ class Story extends Component {
   render() {
     const { story, error, isReadMode, code } = this.state
 
-    console.log(Config.IS_SAFARI)
-
     return (
       <div className="story">
         <div className="right-col">
           <div className={`container ${isReadMode ? 'is-success' : ''} ${Config.IS_IOS ? 'is-ios' : ''}`}>
             <p>BAMBARA</p>
             <p>Night Chimes</p>
-            {
-              isReadMode
-              &&
-              <div>
-                <img className="album-art" src="https://bambara.herokuapp.com/src/client/images/cover.jpg" alt=""/>
-                <button className="button" onClick={this.setIsReadMode}>ENTER DOWNLOAD CODE</button>
-              </div>
-            }
+            <div className={isReadMode ? '' : 'hide'}>
+              <img className="album-art" src="src/client/images/cover.jpg" alt=""/>
+              <button className="button" onClick={this.setIsReadMode}>ENTER DOWNLOAD CODE</button>
+            </div>
             {
               !isReadMode
               &&
@@ -122,7 +115,7 @@ class Story extends Component {
                     onChange={this.updateCode}
                   />
                   <button className="button" type="submit" onClick={this.handleAnalyticsClickReveal}>REVEAL</button>
-                  <a ref={node => {this.download = node}} href="http://celesteglavin.com/BAMBARA.zip" download />
+                  <a ref={node => {this.download = node}} href="http://celesteglavin.com/BAMBARA.zip" download="BAMBARA - Night Chimes" />
                 </form>
               </div>
             }
@@ -143,16 +136,7 @@ class Story extends Component {
                     onChange={this.updateCode}
                   />
                   <button className="button" type="submit">REVEAL</button>
-                  {
-                    !Config.IS_SAFARI
-                    &&
-                    <a ref={node => {this.download = node}} href="http://celesteglavin.com/BAMBARA.zip" download="BAMBARA - Night Chimes" />
-                  }
-                  {
-                    Config.IS_SAFARI
-                    &&
-                    <a ref={node => {this.download = node}} href="http://celesteglavin.com/BAMBARA.zip" />
-                  }
+                  <a ref={node => {this.download = node}} href="http://celesteglavin.com/BAMBARA.zip" download="BAMBARA - Night Chimes" />
                 </form>
                 <p className="instructions">Refer to <a href="https://support.apple.com/en-us/HT205919">iTunes Syncing Help</a> for more info on transferring files to your Apple device.</p>
               </div>
