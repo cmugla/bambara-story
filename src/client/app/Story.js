@@ -83,7 +83,7 @@ class Story extends Component {
     return (
       <div className="story">
         <div className="right-col">
-          <div className={`container ${isReadMode ? 'is-success' : ''}`}>
+          <div className={`container ${isReadMode ? 'is-success' : ''} ${Config.IS_IOS ? 'is-ios' : ''}`}>
             <p>BAMBARA</p>
             <p>Night Chimes</p>
             {
@@ -123,7 +123,6 @@ class Story extends Component {
               &&
               <div>
                 <p>Darn, iOS devices do not support direct file downloads. Come back to this url on your Mac or PC (or Android device) and follow the instructions for download and, once downloaded, transfer the files to your iOS device.</p>
-                <p className="instructions">Refer to <a href="https://support.apple.com/en-us/HT205919">iTunes Syncing Help</a> for more info on transferring files to your Apple device.</p>
                 <p>In the meantime, check out Reid's short story, Night Chimes, below. Enter the highlighted words from the download card to reveal the accompanying unique passage to the world.</p>
                 <form id="code" ref={node => this.form = node} onSubmit={this.handleSubmit}>
                   <TextInput
@@ -136,6 +135,7 @@ class Story extends Component {
                   <button className="button" type="submit">REVEAL</button>
                   <a ref={node => {this.download = node}} href="http://celesteglavin.com/BAMBARA.zip" download />
                 </form>
+                <p className="instructions">Refer to <a href="https://support.apple.com/en-us/HT205919">iTunes Syncing Help</a> for more info on transferring files to your Apple device.</p>
               </div>
             }
             <a href="https://coldmoonrecords.bandcamp.com/album/night-chimes-7" target="blank">Get Night Chimes 7" >>></a>
