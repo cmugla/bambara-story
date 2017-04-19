@@ -7,7 +7,7 @@ import TextInput from './TextInput.js'
 const ajax = new AjaxAdapter(fetch)
 const Config = {
   IS_IOS: !!navigator.userAgent.match(/iPhone|iPad|iPod/i),
-  IS_SAFARI: /^((?!chrome|android).)*safari/i.test(navigator.userAgent),
+  IS_SAFARI: !!navigator.userAgent.indexOf("Safari") != -1,
 }
 
 class Story extends Component {
@@ -87,6 +87,8 @@ class Story extends Component {
 
   render() {
     const { story, error, isReadMode, code } = this.state
+
+    console.log(Config.IS_SAFARI)
 
     return (
       <div className="story">
