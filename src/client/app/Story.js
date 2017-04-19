@@ -170,6 +170,7 @@ class Story extends Component {
             <p>Story by Reid Bateh</p>
             <p>Music by <a href="https://bambara.bandcamp.com/album/night-chimes" target="blank">BAMBARA</a></p>
             <p><a href="https://coldmoonrecords.bandcamp.com/" target="blank">Cold Moon Records</a></p>
+            <p className="instructions">Please contact Cold Moon Records at <a href="mailto:coldmoonrecords@gmail.com">coldmoonrecords@gmail.com</a></p>
             <p>Website by <a href="http://celesteglavin.com/" target="blank">Celeste Glavin</a></p>
           </div>
         </div>
