@@ -10,6 +10,7 @@ export default class AjaxAdapter {
   updateStory(code) {
   	return fetch(`/story/${code}`, {
       method: 'PUT',
+      mode: 'cors',
     }).then( r => r.json() )
   }
 }
