@@ -7,6 +7,7 @@ import TextInput from './TextInput.js'
 const ajax = new AjaxAdapter(fetch)
 const Config = {
   IS_IOS: !!navigator.userAgent.match(/iPhone|iPad|iPod/i),
+  IS_SAFARI: /^((?!chrome|android).)*safari/i.test(navigator.userAgent),
 }
 
 class Story extends Component {
@@ -140,7 +141,16 @@ class Story extends Component {
                     onChange={this.updateCode}
                   />
                   <button className="button" type="submit">REVEAL</button>
-                  <a ref={node => {this.download = node}} href="http://celesteglavin.com/BAMBARA.zip" download />
+                  {
+                    !Config.IS_SAFARI
+                    &&
+                    <a ref={node => {this.download = node}} href="http://celesteglavin.com/BAMBARA.zip" download="BAMBARA - Night Chimes" />
+                  }
+                  {
+                    Config.IS_SAFARI
+                    &&
+                    <a ref={node => {this.download = node}} href="http://celesteglavin.com/BAMBARA.zip" />
+                  }
                 </form>
                 <p className="instructions">Refer to <a href="https://support.apple.com/en-us/HT205919">iTunes Syncing Help</a> for more info on transferring files to your Apple device.</p>
               </div>
