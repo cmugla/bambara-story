@@ -1,8 +1,8 @@
 "use strict";
 
 const { MongoClient } = require('mongodb');
-const dbConnection = process.env['MONGODB_URI'];
-// const dbConnection = 'mongodb://localhost:27017/bambara';
+// const dbConnection = process.env['MONGODB_URI'];
+const dbConnection = 'mongodb://localhost:27017/bambara';
 
 function updateIsCovered(req, res, next) {
   MongoClient.connect(dbConnection, function(err, db) {
