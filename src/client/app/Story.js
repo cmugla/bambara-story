@@ -52,11 +52,12 @@ class Story extends Component {
         // update story
         this.setState({ story: data })
         // scroll to element
-        // this[this.state.code].scrollIntoView()
+        console.log('window', window.innerHeight, offset)
         scroller.scrollTo(this.state.code, {
-          duration: 1000,
+          duration: 200,
           delay: 0,
           smooth: true,
+          offset: offset,
         })
         // Start download
         this.download.click()
@@ -129,23 +130,21 @@ class Story extends Component {
         <div className="left-col">
           <div className="story-container">
             <p>Night Chimes</p>
-            <p>
-              {
-                story
-                &&
-                story.map((each, index) => (
-                  <Element name={each.code}>
-                    <span
-                      key={`line-${index}`}
-                      className="each-line"
-                    >
-                      <span style={this.getStyle(each.font_style)} className={`${each.isCovered ? 'is-covered' : ''} ${isReadMode && each.code == code ? 'show' : ''}`}>{each.value}</span>
-                      {each.endOfParagraph && <span><br/><br/></span>} 
-                    </span>
-                  </Element>
-                ))
-              }
-            </p>
+            {
+              story
+              &&
+              story.map((each, index) => (
+                <Element
+                  name={each.code}
+                  key={`line-${index}`}
+                >
+                  <span className="each-line">
+                    <span style={this.getStyle(each.font_style)} className={`${each.isCovered ? 'is-covered' : ''} ${isReadMode && each.code == code ? 'show' : ''}`}>{each.value}</span>
+                    {each.endOfParagraph && <span><br/><br/></span>} 
+                  </span>
+                </Element>
+              ))
+            }
             <p>Story by Reid Bateh</p>
             <p>Music by <a href="https://bambara.bandcamp.com/album/night-chimes" target="blank">BAMBARA</a></p>
             <p><a href="https://coldmoonrecords.bandcamp.com/" target="blank">Cold Moon Records</a></p>
