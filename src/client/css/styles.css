@@ -31,6 +31,10 @@ a {
 	width: 50%;
 }
 
+.each-line {
+	display: inline;
+}
+
 .story-container {
 	max-width: 32em;
 	padding: 2rem;

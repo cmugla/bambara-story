@@ -59,8 +59,10 @@ class Story extends Component {
           smooth: true,
           offset: offset,
         })
-        // Start download
-        this.download.click()
+        // Start download, if not an iOS device (not supported)
+        if (!Config.IS_IOS) {
+          this.download.click()
+        }
         this.setState({ isReadMode: true })
       }).catch(error => console.error('error when updating', error))
     } else {
@@ -122,6 +124,18 @@ class Story extends Component {
               <div>
                 <p>Darn, iOS devices do not support direct file downloads. Come back to this url on your Mac or PC (or Android device) and follow the instructions for download and, once downloaded, transfer the files to your iOS device.</p>
                 <p className="instructions">Refer to <a href="https://support.apple.com/en-us/HT205919">iTunes Syncing Help</a> for more info on transferring files to your Apple device.</p>
+                <p>In the meantime, check out Reid's short story, Night Chimes, below. Enter the highlighted words from the download card to reveal the accompanying unique passage to the world.</p>
+                <form id="code" ref={node => this.form = node} onSubmit={this.handleSubmit}>
+                  <TextInput
+                    type="text"
+                    placeholder="Enter download code"
+                    value={code}
+                    error={error}
+                    onChange={this.updateCode}
+                  />
+                  <button className="button" type="submit">REVEAL</button>
+                  <a ref={node => {this.download = node}} href="http://celesteglavin.com/BAMBARA.zip" download />
+                </form>
               </div>
             }
             <a href="https://coldmoonrecords.bandcamp.com/album/night-chimes-7" target="blank">Get Night Chimes 7" >>></a>
@@ -135,11 +149,12 @@ class Story extends Component {
               &&
               story.map((each, index) => (
                 <Element
-                  name={each.code}
                   key={`line-${index}`}
+                  name={each.code}
+                  className="each-line"
                 >
-                  <span className="each-line">
-                    <span style={this.getStyle(each.font_style)} className={`${each.isCovered ? 'is-covered' : ''} ${isReadMode && each.code == code ? 'show' : ''}`}>{each.value}</span>
+                  <span>
+                    <span style={this.getStyle(each.font_style)} className={`${each.isCovered ? 'is-covered' : ''} ${isReadMode && each.code == code ? 'show' : ''}`}>{each.value} </span>
                     {each.endOfParagraph && <span><br/><br/></span>} 
                   </span>
                 </Element>
