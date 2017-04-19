@@ -123,7 +123,7 @@ class Story extends Component {
                 <p className="instructions">Refer to <a href="https://support.apple.com/en-us/HT205919">iTunes Syncing Help</a> for more info on transferring files to your Apple device.</p>
               </div>
             }
-            <a href="https://bambara.bandcamp.com/album/night-chimes" target="blank">Listen >>></a>
+            <a href="https://coldmoonrecords.bandcamp.com/album/night-chimes-7" target="blank">Get Night Chimes 7" >>></a>
           </div>
         </div>
         <div className="left-col">
