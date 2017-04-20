@@ -41,7 +41,6 @@ class Story extends Component {
   }
 
   handleAnalyticsClickReveal = e => {
-    // send google anaytics event
     ga('send', 'event', 'Story', 'click', 'REVEAL');
   }
 
@@ -51,6 +50,9 @@ class Story extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+
+    // send google anaytics event
+    this.handleAnalyticsClickReveal()
 
     // validate code --> filter clientside to see if there is a match
     const successCode = this.state.story.filter((each) => each.code === this.state.code)
@@ -97,14 +99,10 @@ class Story extends Component {
           <div className={`container ${isReadMode ? 'is-success' : ''} ${Config.IS_IOS ? 'is-ios' : ''}`}>
             <p>BAMBARA</p>
             <p>Night Chimes</p>
-            {
-              isReadMode
-              &&
-              <div>
-                <img className="album-art" src="src/client/images/cover.jpg" alt=""/>
-                <button className="button" onClick={this.setIsReadMode}>ENTER DOWNLOAD CODE</button>
-              </div>
-            }
+            <div className={isReadMode ? '' : 'hide'}>
+              <img className="album-art" src="src/client/images/cover.jpg" alt=""/>
+              <button className="button" onClick={this.setIsReadMode}>ENTER DOWNLOAD CODE</button>
+            </div>
             {
               !isReadMode
               &&
@@ -122,8 +120,8 @@ class Story extends Component {
                     error={error}
                     onChange={this.updateCode}
                   />
-                  <button className="button" type="submit" onClick={this.handleAnalyticsClickReveal}>REVEAL</button>
-                  <a ref={node => {this.download = node}} href="http://celesteglavin.com/BAMBARA.zip" download />
+                  <button className="button" type="submit">REVEAL</button>
+                  <a ref={node => {this.download = node}} href="http://celesteglavin.com/BAMBARA.zip" download="BAMBARA - Night Chimes" />
                 </form>
               </div>
             }
@@ -144,7 +142,7 @@ class Story extends Component {
                     onChange={this.updateCode}
                   />
                   <button className="button" type="submit">REVEAL</button>
-                  <a ref={node => {this.download = node}} href="http://celesteglavin.com/BAMBARA.zip" download />
+                  <a ref={node => {this.download = node}} href="http://celesteglavin.com/BAMBARA.zip" download="BAMBARA - Night Chimes" />
                 </form>
                 <p className="instructions">Refer to <a href="https://support.apple.com/en-us/HT205919">iTunes Syncing Help</a> for more info on transferring files to your Apple device.</p>
               </div>
@@ -174,6 +172,7 @@ class Story extends Component {
             <p>Story by Reid Bateh</p>
             <p>Music by <a href="https://bambara.bandcamp.com/album/night-chimes" target="blank">BAMBARA</a></p>
             <p><a href="https://coldmoonrecords.bandcamp.com/" target="blank">Cold Moon Records</a></p>
+            <p className="instructions">If any questions, please contact Cold Moon Records at <a href="mailto:coldmoonrecords@gmail.com?subject=Heya%20from%20Bambara%20Night%20Chimes%20website">coldmoonrecords@gmail.com</a></p>
             <p>Website by <a href="http://celesteglavin.com/" target="blank">Celeste Glavin</a></p>
             <p className="instructions">If any questions, please contact Cold Moon Records at <a href="mailto:coldmoonrecords@gmail.com?subject=Heya%20from%20Bambara%20Night%20Chimes%20website">coldmoonrecords@gmail.com</a></p>
           </div>

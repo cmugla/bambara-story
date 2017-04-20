@@ -50,11 +50,11 @@ a {
 
 span.show {
 	-webkit-animation-name: flashColor;
-    -webkit-animation-duration: 5s;
+    -webkit-animation-duration: 10s;
     -webkit-animation-timing-function: ease-out;
     
     animation-name: flashColor;
-    animation-duration: 5s;
+    animation-duration: 10s;
     animation-timing-function: ease-out;
 }
 
@@ -92,7 +92,7 @@ input {
 
 .error {
 	font-size: 0.5rem;
-	color: #303030;
+	color: #f3f3f3;
 }
 
 .button {
@@ -131,7 +131,7 @@ input {
 
 @media (min-width: 601px) and (max-width: 1024px) {
 	.container {
-		width: 50%;
+		width: 60%;
 	}
 }
 
