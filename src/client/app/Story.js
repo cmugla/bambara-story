@@ -83,6 +83,7 @@ class Story extends Component {
       this.setState({
         error: 'That is not a valid code, please try again.'
       })
+      ga('send', 'event', 'Invalid Code', 'error');
     }
   }
 
