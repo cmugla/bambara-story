@@ -45,7 +45,7 @@ class Story extends Component {
   }
 
   handleClickLink = e => {
-    console.log('handleClickLink', e)
+    ga('send', 'event', 'External', 'click', e.target.name);
   }
 
   handleSubmit = (e) => {
@@ -147,7 +147,7 @@ class Story extends Component {
                 <p className="instructions">Refer to <a href="https://support.apple.com/en-us/HT205919">iTunes Syncing Help</a> for more info on transferring files to your Apple device.</p>
               </div>
             }
-            <a href="https://coldmoonrecords.bandcamp.com/album/night-chimes-7" target="blank">Get Night Chimes 7" >>></a>
+            <a name="Night Chimes 7in link" href="https://coldmoonrecords.bandcamp.com/album/night-chimes-7" target="blank" onClick={this.handleClickLink}>Get Night Chimes 7" >>></a>
           </div>
         </div>
         <div className="left-col">
@@ -170,11 +170,10 @@ class Story extends Component {
               ))
             }
             <p>Story by Reid Bateh</p>
-            <p>Music by <a href="https://bambara.bandcamp.com/album/night-chimes" target="blank">BAMBARA</a></p>
-            <p><a href="https://coldmoonrecords.bandcamp.com/" target="blank">Cold Moon Records</a></p>
-            <p className="instructions">If any questions, please contact Cold Moon Records at <a href="mailto:coldmoonrecords@gmail.com?subject=Heya%20from%20Bambara%20Night%20Chimes%20website">coldmoonrecords@gmail.com</a></p>
-            <p>Website by <a href="http://celesteglavin.com/" target="blank">Celeste Glavin</a></p>
-            <p className="instructions">If any questions, please contact Cold Moon Records at <a href="mailto:coldmoonrecords@gmail.com?subject=Heya%20from%20Bambara%20Night%20Chimes%20website">coldmoonrecords@gmail.com</a></p>
+            <p>Music by <a name="BAMBARA bandcamp link" href="https://bambara.bandcamp.com/album/night-chimes" target="blank" onClick={this.handleClickLink}>BAMBARA</a></p>
+            <p><a name="Cold Moon bandcamp link" href="https://coldmoonrecords.bandcamp.com/" target="blank" onClick={this.handleClickLink}>Cold Moon Records</a></p>
+            <p>Website by <a name="Celeste personal link" href="http://celesteglavin.com/" target="blank" onClick={this.handleClickLink}>Celeste Glavin</a></p>
+            <p className="instructions">If any questions, please contact Cold Moon Records at <a name="email Cold Moon" href="mailto:coldmoonrecords@gmail.com?subject=Heya%20from%20Bambara%20Night%20Chimes%20website" onClick={this.handleClickLink}>coldmoonrecords@gmail.com</a></p>
           </div>
         </div>
       </div>
