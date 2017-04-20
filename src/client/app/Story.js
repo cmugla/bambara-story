@@ -144,7 +144,7 @@ class Story extends Component {
                   <button className="button" type="submit">REVEAL</button>
                   <a ref={node => {this.download = node}} href="http://celesteglavin.com/BAMBARA.zip" download="BAMBARA - Night Chimes" />
                 </form>
-                <p className="instructions">Refer to <a href="https://support.apple.com/en-us/HT205919">iTunes Syncing Help</a> for more info on transferring files to your Apple device.</p>
+                <p className="instructions">Refer to <a name="apple support link" href="https://support.apple.com/en-us/HT205919" onClick={this.handleClickLink}>iTunes Syncing Help</a> for more info on transferring files to your Apple device.</p>
               </div>
             }
             <a name="Night Chimes 7in link" href="https://coldmoonrecords.bandcamp.com/album/night-chimes-7" target="blank" onClick={this.handleClickLink}>Get Night Chimes 7" >>></a>
@@ -173,7 +173,7 @@ class Story extends Component {
             <p>Music by <a name="BAMBARA bandcamp link" href="https://bambara.bandcamp.com/album/night-chimes" target="blank" onClick={this.handleClickLink}>BAMBARA</a></p>
             <p><a name="Cold Moon bandcamp link" href="https://coldmoonrecords.bandcamp.com/" target="blank" onClick={this.handleClickLink}>Cold Moon Records</a></p>
             <p>Website by <a name="Celeste personal link" href="http://celesteglavin.com/" target="blank" onClick={this.handleClickLink}>Celeste Glavin</a></p>
-            <p className="instructions">If any questions, please contact Cold Moon Records at <a name="email Cold Moon" href="mailto:coldmoonrecords@gmail.com?subject=Heya%20from%20Bambara%20Night%20Chimes%20website" onClick={this.handleClickLink}>coldmoonrecords@gmail.com</a></p>
+            <p className="instructions">If you have any questions, please contact Cold Moon Records at <a name="email Cold Moon" href="mailto:coldmoonrecords@gmail.com?subject=Heya%20from%20Bambara%20Night%20Chimes%20website" onClick={this.handleClickLink}>coldmoonrecords@gmail.com</a></p>
           </div>
         </div>
       </div>
