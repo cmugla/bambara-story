@@ -45,6 +45,10 @@ class Story extends Component {
     ga('send', 'event', 'Story', 'click', 'REVEAL');
   }
 
+  handleClickLink = e => {
+    console.log('handleClickLink', e)
+  }
+
   handleSubmit = (e) => {
     e.preventDefault()
 
@@ -171,6 +175,7 @@ class Story extends Component {
             <p>Music by <a href="https://bambara.bandcamp.com/album/night-chimes" target="blank">BAMBARA</a></p>
             <p><a href="https://coldmoonrecords.bandcamp.com/" target="blank">Cold Moon Records</a></p>
             <p>Website by <a href="http://celesteglavin.com/" target="blank">Celeste Glavin</a></p>
+            <p className="instructions">If any questions, please contact Cold Moon Records at <a href="mailto:coldmoonrecords@gmail.com?subject=Heya%20from%20Bambara%20Night%20Chimes%20website">coldmoonrecords@gmail.com</a></p>
           </div>
         </div>
       </div>
