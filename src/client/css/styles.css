@@ -50,11 +50,11 @@ a {
 
 span.show {
 	-webkit-animation-name: flashColor;
-    -webkit-animation-duration: 5s;
+    -webkit-animation-duration: 10s;
     -webkit-animation-timing-function: ease-out;
     
     animation-name: flashColor;
-    animation-duration: 5s;
+    animation-duration: 10s;
     animation-timing-function: ease-out;
 }
 
