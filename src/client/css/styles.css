@@ -40,6 +40,16 @@ a {
 	padding: 2rem;
 }
 
+.db-container {
+	opacity: 0;
+	-webkit-transition: opacity 1s;
+    transition: opacity 1s;
+}
+
+.db-container.show-words {
+	opacity: 1;
+}
+
 .is-covered {
 	background-color: #303030;
 	-webkit-user-select: none;  /* Chrome all / Safari all */

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Scroll, { Element, scroller } from 'react-scroll'
+import classNames from 'classnames'
 
 import AjaxAdapter from '../helpers/ajaxAdapter.js'
 import TextInput from './TextInput.js'
@@ -18,9 +19,11 @@ class Story extends Component {
   }
 
   componentDidMount = () => {
+    this.setState({ isLoading: true })
     ajax.getStory().then(data => {
       this.setState({ story: data })
     })
+    this.setState({ isLoading: false })
   }
 
   updateCode = e => {
@@ -92,7 +95,7 @@ class Story extends Component {
   }
 
   render() {
-    const { story, error, isReadMode, code } = this.state
+    const { story, error, isReadMode, code, isLoading } = this.state
 
     return (
       <div className="story">
@@ -100,7 +103,7 @@ class Story extends Component {
           <div className="container">
             <p>BAMBARA</p>
             <p>Night Chimes</p>
-            <div className={isReadMode ? '' : 'hide'}>
+            <div className={classNames({ hide: !isReadMode })}>
               <img className="album-art" src="src/client/images/cover.jpg" alt=""/>
               <button className="button" onClick={this.setIsReadMode}>ENTER DOWNLOAD CODE</button>
             </div>
@@ -154,22 +157,24 @@ class Story extends Component {
         <div className="left-col">
           <div className="story-container">
             <p>Night Chimes</p>
-            {
-              story
-              &&
-              story.map((each, index) => (
-                <Element
-                  key={`line-${index}`}
-                  name={each.code}
-                  className="each-line"
-                >
-                  <span>
-                    <span style={this.getStyle(each.font_style)} className={`${each.isCovered ? 'is-covered' : ''} ${isReadMode && each.code == code ? 'show' : ''}`}>{each.value} </span>
-                    {each.endOfParagraph && <span><br/><br/></span>} 
-                  </span>
-                </Element>
-              ))
-            }
+            <div className={classNames('db-container', { 'show-words': !isLoading })}>
+              {
+                story
+                &&
+                story.map((each, index) => (
+                  <Element
+                    key={`line-${index}`}
+                    name={each.code}
+                    className="each-line"
+                  >
+                    <span>
+                      <span style={this.getStyle(each.font_style)} className={`${each.isCovered ? 'is-covered' : ''} ${isReadMode && each.code == code ? 'show' : ''}`}>{each.value} </span>
+                      {each.endOfParagraph && <span><br/><br/></span>} 
+                    </span>
+                  </Element>
+                ))
+              }
+            </div>
             <p>Story by Reid Bateh</p>
             <p>Music by <a name="BAMBARA bandcamp link" href="https://bambara.bandcamp.com/album/night-chimes" target="blank" onClick={this.handleClickExternalLink}>BAMBARA</a></p>
             <p><a name="Cold Moon bandcamp link" href="https://coldmoonrecords.bandcamp.com/" target="blank" onClick={this.handleClickExternalLink}>Cold Moon Records</a></p>
