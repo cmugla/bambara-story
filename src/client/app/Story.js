@@ -16,14 +16,14 @@ class Story extends Component {
     code: '',
     error: null,
     isReadMode: true,
+    isLoading: true,
   }
 
   componentDidMount = () => {
-    this.setState({ isLoading: true })
     ajax.getStory().then(data => {
       this.setState({ story: data })
+      this.setState({ isLoading: false })
     })
-    this.setState({ isLoading: false })
   }
 
   updateCode = e => {
