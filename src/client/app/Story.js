@@ -41,12 +41,14 @@ class Story extends Component {
   }
 
   handleAnalyticsClickReveal = e => {
-    // send google anaytics event
     ga('send', 'event', 'Story', 'click', 'REVEAL');
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
+
+    // send google anaytics event
+    this.handleAnalyticsClickReveal()
 
     // validate code --> filter clientside to see if there is a match
     const successCode = this.state.story.filter((each) => each.code === this.state.code)
@@ -114,7 +116,7 @@ class Story extends Component {
                     error={error}
                     onChange={this.updateCode}
                   />
-                  <button className="button" type="submit" onClick={this.handleAnalyticsClickReveal}>REVEAL</button>
+                  <button className="button" type="submit">REVEAL</button>
                   <a ref={node => {this.download = node}} href="http://celesteglavin.com/BAMBARA.zip" download="BAMBARA - Night Chimes" />
                 </form>
               </div>
