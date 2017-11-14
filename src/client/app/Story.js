@@ -151,7 +151,7 @@ class Story extends Component {
                 <p className="instructions">Refer to <a name="apple support link" href="https://support.apple.com/en-us/HT205919" onClick={this.handleClickExternalLink}>iTunes Syncing Help</a> for more info on transferring files to your Apple device.</p>
               </div>
             }
-            <a name="Night Chimes 7in link" href="https://coldmoonrecords.bandcamp.com/album/night-chimes-7" target="blank" onClick={this.handleClickExternalLink}>Get Night Chimes 7" >>></a>
+            <a name="Night Chimes 7in link" href="https://coldmoonrecords.bandcamp.com/album/night-chimes-7" target="blank" onClick={this.handleClickExternalLink}>Get Night Chimes 7in >>></a>
           </div>
         </div>
         <div className="left-col">
