@@ -136,7 +136,7 @@ class Story extends Component {
               &&
               <div>
                 <p>Darn, iOS devices do not support direct file downloads. Come back to this url on your Mac or PC (or Android device) and follow the instructions for download and, once downloaded, transfer the files to your iOS device.</p>
-                <p>In the meantime, check out Reid's short story, Night Chimes, below. Enter the highlighted words from the download card to reveal the accompanying unique passage to the world.</p>
+                <p>In the meantime, check out Reid&#39;s short story, Night Chimes, below. Enter the highlighted words from the download card to reveal the accompanying unique passage to the world.</p>
                 <form id="code" ref={node => this.form = node} onSubmit={this.handleSubmit}>
                   <TextInput
                     type="text"
