@@ -114,7 +114,7 @@ class Story extends Component {
               &&
               <div className="form-container">
                 <p className="instructions">Instructions for digital download:</p>
-                <p className="instructions">Enter the highlighted words on the download card sent to you with your copy of the Night Chimes 7". Click REVEAL.</p>
+                <p className="instructions">Enter the highlighted words on the download card sent to you with your copy of the Night Chimes 7-inch. Click REVEAL.</p>
                 <p className="instructions">Your download will start immediately after your passage is revealed to the world.</p>
                 <form id="code" ref={node => this.form = node} onSubmit={this.handleSubmit}>
                   <TextInput
