@@ -101,7 +101,7 @@ class Story extends Component {
   };
 
   render() {
-    const { story, error, isReadMode, code, isLoading } = this.state;
+    const { story, error, isReadMode, code, isLoading, success } = this.state;
 
     return (
       <div className="story">
@@ -199,7 +199,7 @@ class Story extends Component {
                 </p>
               </div>
             )}
-            {this.state.success && (
+            {success && (
               <a
                 target="new"
                 href="http://celesteglavin.com/BAMBARA.zip"
